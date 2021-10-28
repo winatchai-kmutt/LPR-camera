@@ -1,0 +1,61 @@
+1. npm init -y
+2. npm i express mongoose บราๆ ทั้ง morgan nodemon
+3. server.js, app set พื้นฐานสำหรับทดสอบ ทั้ง error สำหรับ หน้า localhost:3000
+
+4. test postman ได้
+จริงๆควรเก็บส่วน database ไว้ก่อน ซึ่งทำอันนี้ก่อน
+ออกแบบว่ามี API ส่วนไหนบ้าง desof 
+5. set datatbase
+6. connect database    // เชื่อมได้ที่server เลย 
+		-->  mongoose.connect(url ,{}).then บราๆๆ  ใช้ promise ช่วย
+7. สร้าง model
+	--> model:
+		--> Posts.js:
+			-->  สร้าง Schema // ซึ่งเป็นตัวกำหนดโครงข้อมูล json JSON Schema ใช้สำหรับแสดง format โครงสร้างของ JSON
+RRSTFUL API
+8. สร้าง routes  มีหน้าที่ ทำงานเกี่ยวกับ url เช่น ถ้าเป็น ลิ้งนี้ แบบ post get put บลาๆ api/posts จะให้ทำอะไร
+	--> routes:
+		--> posts.js    ซึ่งเราจะกำหนด url ตรงนี้ เพื่อ post get อะไรก็ตามแต่ api/posts
+			--> สร้าง  routes, require Posts(model), 
+			--> ทดสอบ router.post('/',(req,res)=>{
+   				 	console.log(req.body);
+					});
+			*Posts
+	--> server.js
+		--> const postRoutes = require('./routes/api/posts');
+		--> app.use('/api/posts', postRoutes);
+		--> 	// BodyParser Middleware เข้าถึงurl req.body อะไรประมาณนี้ได้ ใช้ module Body-parser ดีกว่า
+			app.use(express.json()); 
+		
+	ลอง postman ดู : 
+		Header: [{"key":"Content-Type","value":"application/json","description":""}]
+		
+		body : row, json ซึ่่งก็ส่งขอมูลตาม model ที่กำหนดไว้
+
+9. สร้าง     --> posts.js 
+	 // @routes POST api/posts 
+	 // @desc Create An post	
+		
+
+	// @routes GET api/posts
+	// @desc Create All post
+
+	// @routes GET api/posts/:id
+	// @desc GET An post
+
+	// @routes DELETE api/posts/:id
+	// @desc delete An post
+
+	// @routes UPDATE api/posts/:id
+	// @desc update An post
+	
+
+
+
+
+
+
+
+
+
+	
